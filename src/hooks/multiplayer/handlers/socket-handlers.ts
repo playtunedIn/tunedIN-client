@@ -9,6 +9,7 @@ import {
   type SocketReadyState,
 } from './socket-handlers.constants';
 
+//todo Determine this backend host variable
 export const createSocket = () => new WebSocketWrapper(`wss://${APP_ENV__backendHost}/ws/multiplayer`);
 
 export const useSocketHandlers = (

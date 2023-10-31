@@ -1,4 +1,5 @@
 import { SOCKET_READY_STATES, useMultiplayerClient } from '@hooks/multiplayer/index';
+import React from 'react';
 
 type ConnectionInfo = {
   className: string;

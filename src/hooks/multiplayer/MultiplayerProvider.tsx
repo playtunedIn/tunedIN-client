@@ -1,6 +1,6 @@
 import type { PropsWithChildren } from 'react';
 import { createContext, useEffect, useState } from 'react';
-
+import React from 'react';
 import { createSocket, useSocketHandlers } from './handlers/socket-handlers';
 import type { SocketReadyState } from './handlers/socket-handlers.constants';
 import { SOCKET_READY_STATES } from './handlers/socket-handlers.constants';

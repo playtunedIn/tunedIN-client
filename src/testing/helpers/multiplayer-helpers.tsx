@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import type { RenderOptions } from '@testing-library/react';
 import { render } from '@testing-library/react';
 import { configureStore, type PreloadedState } from '@reduxjs/toolkit';
-
+import React from 'react';
 import { MultiplayerProvider } from '@hooks/multiplayer';
 import { rootReducer } from '@store/store';
 import type { AppStore, RootState } from '@store/store';
