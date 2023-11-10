@@ -1,9 +1,13 @@
 import { StackNavigationProp } from '@react-navigation/stack';
 import React from 'react';
-import { View, Text } from 'react-native';
+import { useEffect } from 'react';
+import { View, Text, Linking } from 'react-native';
 import { Button, Icon } from 'react-native-elements';
 import { RootStackParamList } from '../../navigationTypes';
 import styles from '../../styles';
+import useUserState from './hooks/useUserState';
+
+const API_LOGIN_URL = 'https://local.playtunedin-test.com:3001/login';
 
 type LoginScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Login'>;
 
@@ -12,6 +16,14 @@ type LoginScreenProps = {
 };
 
 export function LoginScreen({ navigation }: LoginScreenProps) {
+
+  const userState = useUserState(window);
+  if (userState.userToken) {
+    navigation.navigate("Welcome");
+  }
+
+  const onLogin = () => window ? window.location.href = API_LOGIN_URL : Linking.openURL(API_LOGIN_URL);
+
   return (
     <View style={styles.container}>
       <View style={styles.headerContainer}>
@@ -25,7 +37,7 @@ export function LoginScreen({ navigation }: LoginScreenProps) {
             TunedIN uses your Spotify music history to create a fun and interactive game for you and your friends! Click the button below to link your Spotify account now.
         </Text>
 
-        <Button title="Link Spotify Account" buttonStyle={styles.playButton} onPress={() => navigation.navigate('Welcome')}/>
+        <Button title="Link Spotify Account" buttonStyle={styles.playButton} onPress={onLogin}/>
       </View>
 
       <View style={styles.socialIconsContainer}>
