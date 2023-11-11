@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 
-
 const useUserState = (window: Window) => {
-    const [userToken, setUserToken] = useState<string | null>(null);
+    const [userToken, setUserToken] = useState<string | null>(localStorage.getItem("TUNEDIN_TOKEN"));
+
+    const [user, setUser] = useState<User | null>(null);
 
     // set token from query params if it exists
     useEffect(() => {
@@ -10,22 +11,28 @@ const useUserState = (window: Window) => {
         if (parsedUrl && parsedUrl.searchParams.get("token")) {
             const token = parsedUrl.searchParams.get("token")!;
             localStorage.setItem("TUNEDIN_TOKEN", token);
-            console.log("setting token from query params");
             setUserToken(token)
         }
     }, [window.location.href, setUserToken]);
 
-    // check if token is already stored
     useEffect(() => {
-        const tokenFromStorage = localStorage.getItem("TUNEDIN_TOKEN");
-        if (tokenFromStorage) {
-            console.log("setting token from storage");
-            setUserToken(tokenFromStorage);
-        }
-    }, [setUserToken]);
+        const fetchMe = async () => {
+            const accessResponse = await fetch('https://local.playtunedin-test.com:3001/self', {
+              headers: {
+                Authorization: `Bearer ${userToken}`,
+              },
+            });
+            const body = await accessResponse.json();
+            setUser(body.user);
+          };
+          if (userToken) {
+            fetchMe();
+          }
+    }, [userToken])
 
     return {
-        userToken
+        userToken,
+        user
     }
 
 }
