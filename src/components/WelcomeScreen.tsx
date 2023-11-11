@@ -21,7 +21,6 @@ export function WelcomeScreen({ navigation }: WelcomeScreenProps) {
       <View style={styles.headerContainer}>
         <Text style={styles.logoText}>tuned<Text style={styles.logoIN}>IN</Text></Text>
         <Icon name="music-note" size={30} color="#000" />
-        <Text style={styles.logoText}>Logout</Text>
       </View>
 
       <View style={styles.contentContainer}>
