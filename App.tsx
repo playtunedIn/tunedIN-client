@@ -1,5 +1,6 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { Provider } from 'react-redux';
 import { LoginScreen } from './src/components/LoginScreen';
 import { WelcomeScreen } from './src/components/WelcomeScreen';
 import { PartyPlayScreen } from './src/components/PartyPlayScreen';
@@ -15,6 +16,7 @@ import { SessionResults } from './src/components/SessionResults';
 import { SessionWinner } from './src/components/SessionWinner';
 import useUserState from './src/components/hooks/useUserState';
 import { MultiplayerProvider } from './src/hooks/multiplayer';
+import { setupStore } from './src/store/store';
 
 
 const Stack = createNativeStackNavigator();
@@ -23,6 +25,7 @@ export default function App() {
   const userState = useUserState(window);
   const initialRoute = userState.userToken ? "Welcome" : "Login";
   return (
+    <Provider store={setupStore()}>
     <MultiplayerProvider >
     <NavigationContainer>
       <Stack.Navigator initialRouteName={initialRoute}>
@@ -41,5 +44,6 @@ export default function App() {
       </Stack.Navigator>
     </NavigationContainer>
     </MultiplayerProvider>
+    </Provider>
   );
 }

@@ -1,3 +1,4 @@
+import { useAppSelector } from '../hooks/store/app-store';
 import { StackNavigationProp } from '@react-navigation/stack';
 import React from 'react';
 import { View, Text } from 'react-native';
@@ -12,22 +13,22 @@ type HostLobbyProps = {
 };
 
 export function HostLobby({ navigation }: HostLobbyProps) {
+  const roomState = useAppSelector(state => state.room);
+  const playerState = useAppSelector(state => state.players);
+
   return (
     <View style={styles.container}>
 
-<View style={styles.headerContainer}>
+      <View style={styles.headerContainer}>
         <Text style={styles.logoText}>tuned<Text style={styles.logoIN}>IN</Text></Text>
         <Icon name="music-note" size={30} color="#000" />
       </View>
 
       <View style={styles.contentContainer}>
         <Text style={styles.welcomeText}>Party Play</Text>
-        <Text style={styles.descriptionText}>Game Lobby: SJ4Z</Text>
+        <Text style={styles.descriptionText}>Game Lobby: {roomState.roomId}</Text>
         <Text></Text>
-        <Text>Haley</Text>
-        <Text>Matt</Text>
-        <Text>Shayne</Text>
-        <Text>Trevor</Text>
+        {playerState.players.map(player => <Text key={player.userId}>{player.name}</Text>)}
         <Text></Text>
         <Button title="Leave Room" buttonStyle={styles.playButton} />
         <Button title="Start Game" buttonStyle={styles.playButton} onPress={() => navigation.navigate('Question')}/>

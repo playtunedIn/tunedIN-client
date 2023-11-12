@@ -1,3 +1,4 @@
+import { APP_ENV__backendHost } from 'src/app-env';
 import { useSocketMessageHandlers } from './socket-message-handlers';
 import { WebSocketWrapper } from '../websocket-wrapper';
 import {

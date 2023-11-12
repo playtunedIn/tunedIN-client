@@ -1,5 +1,5 @@
 import { useUpdatePlayersHandlers } from '@hooks/multiplayer/handlers/message-handlers/subscriber-updates/update-players';
-import { useUpdateRoomHandlers } from '@hooks/multiplayer/handlers/message-handlers/subscriber-updates/update-room';
+import { useUpdateRoomHandlers } from '../../../../../hooks/multiplayer/handlers/message-handlers/subscriber-updates/update-room';
 
 export const useSubscriberHandler = () => {
   const { addPlayerHandler } = useUpdatePlayersHandlers();

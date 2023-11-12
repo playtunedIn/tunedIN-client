@@ -7,6 +7,7 @@ import { View, Text } from 'react-native';
 import { Button, Icon } from 'react-native-elements';
 import { RootStackParamList } from '../../navigationTypes';
 import styles from '../../styles';
+import SocketStatus from './common/SocketStatus';
 
 type RoundSelectionNavigationProp = StackNavigationProp<RootStackParamList, 'RoundSelection'>;
 
@@ -16,6 +17,8 @@ type RoundSelectionProps = {
 
 export function RoundSelection({ navigation }: RoundSelectionProps) {
   const [waitingForRoomCreate, setWaitingForRoomCreate] = useState(false);
+  const [rounds, setRounds] = useState(5);
+
   const { createRoom, connectionStatus } = useMultiplayerClient();
 
   const onCreateRoom = () => {
@@ -44,14 +47,15 @@ export function RoundSelection({ navigation }: RoundSelectionProps) {
       <View style={styles.contentContainer}>
         <Text style={styles.welcomeText}>Party Play</Text>
         <Text style={styles.descriptionText}>Select number of rounds.</Text>
-        <Button title="5  Rounds" buttonStyle={styles.playButton} />
-        <Button title="10 Rounds" buttonStyle={styles.playButton} />
-        <Button title="15 Rounds" buttonStyle={styles.playButton} />
+        <Button title="5  Rounds" buttonStyle={styles.playButton} onPress={() => setRounds(5)} />
+        <Button title="10 Rounds" buttonStyle={styles.playButton} onPress={() => setRounds(5)} />
+        <Button title="15 Rounds" buttonStyle={styles.playButton} onPress={() => setRounds(5)} />
         <Text></Text>
         <Button title="Cancel" buttonStyle={styles.playButton} />
         <Button title="Create Room" buttonStyle={styles.playButton} onPress={onCreateRoom}/>
       </View>
 
+      <SocketStatus />
       <View style={styles.socialIconsContainer}>
           <Icon name="facebook" type="font-awesome" color="#3b5998" size={24} />
           <Icon name="instagram" type="font-awesome" color="#C13584" size={24} style={styles.iconSpacing} />
