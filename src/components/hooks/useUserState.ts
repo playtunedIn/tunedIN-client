@@ -22,12 +22,17 @@ const useUserState = (window: Window) => {
                 Authorization: `Bearer ${userToken}`,
               },
             });
-            const body = await accessResponse.json();
-            setUser(body.user);
-          };
-          if (userToken) {
+            if (accessResponse.status === 403) {
+                localStorage.removeItem("TUNEDIN_TOKEN");
+                setUserToken(null);
+            } else if (accessResponse.ok) {
+                const body = await accessResponse.json();
+                setUser(body.user);
+            }
+        };
+        if (userToken) {
             fetchMe();
-          }
+        }
     }, [userToken])
 
     return {
