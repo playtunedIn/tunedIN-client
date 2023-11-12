@@ -4,6 +4,7 @@ import { View, Text, StyleSheet } from 'react-native';
 import { Button, Icon } from 'react-native-elements';
 import { RootStackParamList } from '../../navigationTypes';
 import styles from '../../styles';
+import useUserState from './hooks/useUserState';
 
 type WelcomeScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Welcome'>;
 
@@ -12,6 +13,9 @@ type WelcomeScreenProps = {
 };
 
 export function WelcomeScreen({ navigation }: WelcomeScreenProps) {
+
+  const {user} = useUserState(window);
+
   return (
     <View style={styles.container}>
       <View style={styles.headerContainer}>
@@ -19,14 +23,19 @@ export function WelcomeScreen({ navigation }: WelcomeScreenProps) {
         <Icon name="music-note" size={30} color="#000" />
       </View>
 
-      <View style={styles.contentContainer}>
-        <Text style={styles.welcomeText}>Welcome to tunedIN Haley!</Text>
-        <Text style={styles.descriptionText}>
+      {!!user && <View style={styles.contentContainer}>
+        <Text style={styles.welcomeText}>Welcome to tunedIN {user?.display_name}!</Text>
+       <Text style={styles.descriptionText}>
           You have successfully signed in with your Spotify account. Now let's get playing!
         </Text>
 
         <Button title="PLAY" buttonStyle={styles.playButton} onPress={() => navigation.navigate('PartyPlay')}/>
-      </View>
+      </View>}
+      {!user && <View style={styles.contentContainer}>
+        <Text style={styles.welcomeText}>There was an issue authenticating</Text>
+          <Button title="Back to home" buttonStyle={styles.playButton} onPress={() => navigation.navigate('Login')}/>
+
+        </View>}
 
       <View style={styles.socialIconsContainer}>
           <Icon name="facebook" type="font-awesome" color="#3b5998" size={24} />

@@ -13,13 +13,16 @@ import { RoundResults } from './src/components/RoundResults';
 import { RoundPointsScreen } from './src/components/RoundPointsScreen';
 import { SessionResults } from './src/components/SessionResults';
 import { SessionWinner } from './src/components/SessionWinner';
+import useUserState from './src/components/hooks/useUserState';
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+  const userState = useUserState(window);
+  const initialRoute = userState.userToken ? "Welcome" : "Login";
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login">
+      <Stack.Navigator initialRouteName={initialRoute}>
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Welcome" component={WelcomeScreen} />
         <Stack.Screen name="PartyPlay" component={PartyPlayScreen} />
