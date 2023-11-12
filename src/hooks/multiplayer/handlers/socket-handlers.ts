@@ -1,4 +1,3 @@
-import { APP_ENV__backendHost } from 'src/app-env';
 import { useSocketMessageHandlers } from './socket-message-handlers';
 import { WebSocketWrapper } from '../websocket-wrapper';
 import {
@@ -10,7 +9,7 @@ import {
 } from './socket-handlers.constants';
 
 //todo Determine this backend host variable
-export const createSocket = () => new WebSocketWrapper(`wss://${APP_ENV__backendHost}/ws/multiplayer`);
+export const createSocket = () => new WebSocketWrapper(`wss://local.playtunedin-test.com:3001/ws/multiplayer`);
 
 export const useSocketHandlers = (
   socket: WebSocketWrapper,

@@ -14,6 +14,8 @@ import { RoundPointsScreen } from './src/components/RoundPointsScreen';
 import { SessionResults } from './src/components/SessionResults';
 import { SessionWinner } from './src/components/SessionWinner';
 import useUserState from './src/components/hooks/useUserState';
+import { MultiplayerProvider } from './src/hooks/multiplayer';
+
 
 const Stack = createNativeStackNavigator();
 
@@ -21,6 +23,7 @@ export default function App() {
   const userState = useUserState(window);
   const initialRoute = userState.userToken ? "Welcome" : "Login";
   return (
+    <MultiplayerProvider >
     <NavigationContainer>
       <Stack.Navigator initialRouteName={initialRoute}>
         <Stack.Screen name="Login" component={LoginScreen} />
@@ -37,5 +40,6 @@ export default function App() {
         <Stack.Screen name="SessionWinner" component={SessionWinner} />
       </Stack.Navigator>
     </NavigationContainer>
+    </MultiplayerProvider>
   );
 }

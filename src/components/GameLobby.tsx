@@ -1,7 +1,7 @@
 import { StackNavigationProp } from '@react-navigation/stack';
 import React from 'react';
 import { View, Text } from 'react-native';
-import { Button, Avatar, Input, Icon } from 'react-native-elements';
+import { Button, Icon } from 'react-native-elements';
 import { RootStackParamList } from '../../navigationTypes';
 import styles from '../../styles';
 

@@ -1,7 +1,10 @@
+import { useMultiplayerClient } from '../../src/hooks/multiplayer';
+import { useAppSelector } from '../../src/hooks/store/app-store';
 import { StackNavigationProp } from '@react-navigation/stack';
-import React from 'react';
+import React, { useState } from 'react';
+import { useEffect } from 'react';
 import { View, Text } from 'react-native';
-import { Button, Avatar, Input, Icon } from 'react-native-elements';
+import { Button, Icon } from 'react-native-elements';
 import { RootStackParamList } from '../../navigationTypes';
 import styles from '../../styles';
 
@@ -12,10 +15,28 @@ type RoundSelectionProps = {
 };
 
 export function RoundSelection({ navigation }: RoundSelectionProps) {
+  const [waitingForRoomCreate, setWaitingForRoomCreate] = useState(false);
+  const { createRoom, connectionStatus } = useMultiplayerClient();
+
+  const onCreateRoom = () => {
+    setWaitingForRoomCreate(true);
+    createRoom();
+  }
+
+  // get room id, which won't exist until after the room has been created
+  const roomId = useAppSelector(state => state.room.roomId);
+
+  useEffect(() => {
+    if (roomId && waitingForRoomCreate) {
+      setWaitingForRoomCreate(false);
+      navigation.navigate('HostLobby');
+    }
+  }, [roomId, waitingForRoomCreate])
+
   return (
     <View style={styles.container}>
 
-<View style={styles.headerContainer}>
+      <View style={styles.headerContainer}>
         <Text style={styles.logoText}>tuned<Text style={styles.logoIN}>IN</Text></Text>
         <Icon name="music-note" size={30} color="#000" />
       </View>
@@ -28,7 +49,7 @@ export function RoundSelection({ navigation }: RoundSelectionProps) {
         <Button title="15 Rounds" buttonStyle={styles.playButton} />
         <Text></Text>
         <Button title="Cancel" buttonStyle={styles.playButton} />
-        <Button title="Create Room" buttonStyle={styles.playButton} onPress={() => navigation.navigate('HostLobby')}/>
+        <Button title="Create Room" buttonStyle={styles.playButton} onPress={onCreateRoom}/>
       </View>
 
       <View style={styles.socialIconsContainer}>

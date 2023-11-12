@@ -1,5 +1,5 @@
-import { useAppDispatch } from '@hooks/store/app-store';
-import { updateRoomErrorCode } from '@store/multiplayer/room-slice/room-slice';
+import { useAppDispatch } from '../../../../hooks/store/app-store';
+import { updateRoomErrorCode } from '../../../../store/multiplayer/room-slice/room-slice';
 
 export interface StartGameErrorResponse {
   errorCode: string;

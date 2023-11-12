@@ -1,6 +1,6 @@
-import { useAppDispatch } from '@hooks/store/app-store';
-import type { RoomState } from '@store/multiplayer/room-slice/room-slice.types';
-import { updateRoomState } from '@store/multiplayer/room-slice/room-slice';
+import { useAppDispatch } from '../../../../hooks/store/app-store';
+import type { RoomState } from '../../../../store/multiplayer/room-slice/room-slice.types';
+import { updateRoomState } from '../../../../store/multiplayer/room-slice/room-slice';
 
 interface RecoverRoomSessionResponse {
   state: RoomState;
