@@ -15,6 +15,8 @@ type RoundSelectionProps = {
   navigation: RoundSelectionNavigationProp;
 };
 
+const numberOfRounds = [5, 10, 15];
+
 export function RoundSelection({ navigation }: RoundSelectionProps) {
   const [waitingForRoomCreate, setWaitingForRoomCreate] = useState(false);
   const [rounds, setRounds] = useState(5);
@@ -23,7 +25,7 @@ export function RoundSelection({ navigation }: RoundSelectionProps) {
 
   const onCreateRoom = () => {
     setWaitingForRoomCreate(true);
-    createRoom();
+    createRoom(rounds);
   }
 
   // get room id, which won't exist until after the room has been created
@@ -47,9 +49,10 @@ export function RoundSelection({ navigation }: RoundSelectionProps) {
       <View style={styles.contentContainer}>
         <Text style={styles.welcomeText}>Party Play</Text>
         <Text style={styles.descriptionText}>Select number of rounds.</Text>
-        <Button title="5  Rounds" buttonStyle={styles.playButton} onPress={() => setRounds(5)} />
-        <Button title="10 Rounds" buttonStyle={styles.playButton} onPress={() => setRounds(5)} />
-        <Button title="15 Rounds" buttonStyle={styles.playButton} onPress={() => setRounds(5)} />
+        {numberOfRounds.map(numRounds => 
+          <Button title={`${numRounds}  Rounds`} buttonStyle={styles.playButton} onPress={() => setRounds(numRounds)} />
+        )}
+
         <Text></Text>
         <Button title="Cancel" buttonStyle={styles.playButton} />
         <Button title="Create Room" buttonStyle={styles.playButton} onPress={onCreateRoom}/>
