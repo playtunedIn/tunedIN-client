@@ -10,7 +10,7 @@ import {
 } from './socket-handlers.constants';
 
 //todo Determine this backend host variable
-export const createSocket = () => new WebSocketWrapper(`wss://local.playtunedin-test.com:3001/ws/multiplayer`);
+export const createSocket = () => new WebSocketWrapper(`wss://localhost:3001/ws/multiplayer`);
 
 export const useSocketHandlers = (
   socket: WebSocketWrapper,
