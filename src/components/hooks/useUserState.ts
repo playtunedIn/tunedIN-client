@@ -19,17 +19,22 @@ const useUserState = (window: Window) => {
 
     useEffect(() => {
         const fetchMe = async () => {
-            const accessResponse = await fetch('https://localhost:3001/self', {
-              headers: {
-                Authorization: `Bearer ${userToken}`,
-              },
-            });
-            if (accessResponse.status === 403) {
+            try {
+                const accessResponse = await fetch('https://localhost:3001/self', {
+                    headers: {
+                        Authorization: `Bearer ${userToken}`,
+                    },
+                });
+                if (accessResponse.status === 403) {
+                    localStorage.removeItem("TUNEDIN_TOKEN");
+                    setUserToken(null);
+                } else if (accessResponse.ok) {
+                    const body = await accessResponse.json();
+                    setUser(body.user);
+                }
+            } catch(e) {
                 localStorage.removeItem("TUNEDIN_TOKEN");
                 setUserToken(null);
-            } else if (accessResponse.ok) {
-                const body = await accessResponse.json();
-                setUser(body.user);
             }
         };
         if (userToken) {

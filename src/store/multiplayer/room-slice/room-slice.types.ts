@@ -6,4 +6,4 @@ export interface RoomState {
   roomErrorCode?: string;
 }
 
-export type RoomStatus = ROOM_STATUS;
+export type RoomStatus = (typeof ROOM_STATUS)[keyof typeof ROOM_STATUS];

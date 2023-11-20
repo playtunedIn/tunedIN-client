@@ -2,12 +2,18 @@
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
     "strict": true,
-    "module": "nodenext",
-
     "jsx": "react",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "baseUrl": "."
+    "baseUrl": ".",
+    "paths": {
+      "@assets/*": ["./src/assets/*"],
+      "@components/*": ["./src/components/*"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@store/*": ["./src/store/*"],
+      "@testing/*": ["./src/testing/*"],
+      "src/*": ["./src/*"]
+    }
   },
-  "include": ["./src/**/*.ts", "./src/**/*.tsx"]
+  "include": ["**/*.ts", "**/*.tsx"]
 }
