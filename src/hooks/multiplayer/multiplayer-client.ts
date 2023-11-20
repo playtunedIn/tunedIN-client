@@ -2,7 +2,7 @@ import {
   CREATE_ROOM_MESSAGE,
   JOIN_ROOM_MESSAGE,
   START_GAME_MESSAGE,
-} from '../../hooks/multiplayer/handlers/socket-handlers.constants';
+} from '@hooks/multiplayer/handlers/socket-handlers.constants';
 import { useSocket } from './socket';
 
 /**

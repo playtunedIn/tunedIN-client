@@ -1,4 +1,4 @@
-import { useAppSelector } from '../hooks/store/app-store';
+import { useAppSelector } from '@hooks/store/app-store';
 import { StackNavigationProp } from '@react-navigation/stack';
 import React from 'react';
 import { View, Text } from 'react-native';

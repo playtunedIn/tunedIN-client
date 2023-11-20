@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
-import { ROOM_STATUS } from '../../../store/multiplayer/room-slice/room-slice.constants';
+import { ROOM_STATUS } from '@store/multiplayer/room-slice/room-slice.constants';
 import type { RoomState, RoomStatus } from '@store/multiplayer/room-slice/room-slice.types';
 
 const initialState: RoomState = {

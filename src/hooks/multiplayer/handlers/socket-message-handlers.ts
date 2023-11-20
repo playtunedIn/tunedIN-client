@@ -1,8 +1,8 @@
-import { useRecoverRoomSessionHandlers } from '../../../hooks/multiplayer/handlers/message-handlers/recover-room-handlers';
+import { useRecoverRoomSessionHandlers } from '@hooks/multiplayer/handlers/message-handlers/recover-room-handlers';
 import { useCreateRoomResponseHandlers } from './message-handlers/create-room-handlers';
 import { useExitRoomResponseHandlers } from './message-handlers/exit-room-handlers';
-import { useJoinRoomResponseHandlers } from '../../../hooks/multiplayer/handlers/message-handlers/join-room-handlers';
-import { useStartGameResponseHandlers } from '../../../hooks/multiplayer/handlers/message-handlers/start-game-handlers';
+import { useJoinRoomResponseHandlers } from '@hooks/multiplayer/handlers/message-handlers/join-room-handlers';
+import { useStartGameResponseHandlers } from '@hooks/multiplayer/handlers/message-handlers/start-game-handlers';
 
 export const useSocketMessageHandlers = (setNeedsRecovery: React.Dispatch<React.SetStateAction<boolean>>) => {
   const { createRoomResponseHandler, createRoomErrorResponseHandler } = useCreateRoomResponseHandlers();

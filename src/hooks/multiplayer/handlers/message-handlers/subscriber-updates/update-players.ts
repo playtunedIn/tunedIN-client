@@ -1,6 +1,6 @@
-import { useAppDispatch } from '../../../../../hooks/store/app-store';
-import { addPlayer } from '../../../../../store/multiplayer/players-slice/players-slice';
-import type { PlayerState } from '../../../../../store/multiplayer/players-slice/players-slice.types';
+import { useAppDispatch } from '@hooks/store/app-store';
+import { addPlayer } from '@store/multiplayer/players-slice/players-slice';
+import type { PlayerState } from '@store/multiplayer/players-slice/players-slice.types';
 
 export interface AddPlayerResponse {
   player: PlayerState;

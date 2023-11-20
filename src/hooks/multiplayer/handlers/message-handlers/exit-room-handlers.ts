@@ -2,8 +2,8 @@
  * TODO: These types are not accurate. Implement exit room handler in SPOT-49
  */
 
-import { useAppDispatch } from '../../../../hooks/store/app-store';
-import { updateRoomId } from '../../../../store/multiplayer/room-slice/room-slice';
+import { useAppDispatch } from '@hooks/store/app-store';
+import { updateRoomId } from '@store/multiplayer/room-slice/room-slice';
 
 interface ExitRoomResponse {
   roomId: string;
