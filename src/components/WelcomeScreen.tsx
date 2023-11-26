@@ -4,6 +4,7 @@ import { View, Text, StyleSheet } from 'react-native';
 import { Button, Icon } from 'react-native-elements';
 import { RootStackParamList } from '../../navigationTypes';
 import styles from '../../styles';
+import SocketStatus from './common/SocketStatus';
 import useUserState from './hooks/useUserState';
 
 type WelcomeScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Welcome'>;
@@ -37,6 +38,7 @@ export function WelcomeScreen({ navigation }: WelcomeScreenProps) {
 
         </View>}
 
+      <SocketStatus />
       <View style={styles.socialIconsContainer}>
           <Icon name="facebook" type="font-awesome" color="#3b5998" size={24} />
           <Icon name="instagram" type="font-awesome" color="#C13584" size={24} style={styles.iconSpacing} />

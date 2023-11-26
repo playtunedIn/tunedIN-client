@@ -14,5 +14,6 @@
       "@testing/*": ["./src/testing/*"],
       "src/*": ["./src/*"]
     }
-  }
+  },
+  "include": ["**/*.ts", "**/*.tsx"]
 }

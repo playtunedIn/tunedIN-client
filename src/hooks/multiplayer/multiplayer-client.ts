@@ -11,8 +11,8 @@ import { useSocket } from './socket';
 export const useMultiplayerClient = () => {
   const { closeConnection, sendMessage, status } = useSocket();
 
-  const createRoom = () => {
-    sendMessage(CREATE_ROOM_MESSAGE);
+  const createRoom = (numRounds: number) => {
+    sendMessage(CREATE_ROOM_MESSAGE, { numRounds });
   };
 
   const joinRoom = (roomId: string, name: string) => {
