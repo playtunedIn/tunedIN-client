@@ -1,9 +1,11 @@
 import { StackNavigationProp } from '@react-navigation/stack';
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Image} from 'react-native';
 import { Button, Avatar, Input, Icon } from 'react-native-elements';
 import { RootStackParamList } from '../../navigationTypes';
 import styles from '../../styles';
+import { Footer } from './footer/Footer';
+import { Header } from './header/Header';
 
 type GameLobbyNavigationProp = StackNavigationProp<RootStackParamList, 'GameLobby'>;
 
@@ -12,34 +14,82 @@ type GameLobbyProps = {
 };
 
 export function GameLobby({ navigation }: GameLobbyProps) {
+  const players = [
+    {
+      id: 1,
+      name: 'Haley',
+      avatar: <Icon name='account_circle' size={20} />
+    },
+    {
+      id: 2,
+      name: 'Matt',
+      avatar: <Icon name='account_circle' size={20} />
+    },
+    {
+      id: 3,
+      name: 'Trevor',
+      avatar: <Icon name='account_circle' size={20} />
+    },
+    {
+      id: 4,
+      name: 'Emil',
+      avatar: <Icon name='account_circle' size={20} />
+    },
+    {
+      id: 5,
+      name: 'Jamie',
+      avatar: <Icon name='account_circle' size={20} />
+    },
+  ]
+  
   return (
+    <>
     <View style={styles.container}>
-
-<View style={styles.headerContainer}>
-        <Text style={styles.logoText}>tuned<Text style={styles.logoIN}>IN</Text></Text>
-        <Icon name="music-note" size={30} color="#000" />
-      </View>
-
+      <Header />
       <View style={styles.contentContainer}>
-        <Text style={styles.welcomeText}>Party Play</Text>
-        <Text style={styles.descriptionText}>Game Lobby: SJ4Z</Text>
-        <Text></Text>
-        <Text>Haley</Text>
-        <Text>Matt</Text>
-        <Text>Shayne</Text>
-        <Text>Trevor</Text>
-        <Text></Text>
-        <Button title="Leave Room" buttonStyle={styles.playButton} />
-        <Button title="Waiting for Host..." buttonStyle={styles.playButton} onPress={() => navigation.navigate('Question')}/>
+        <>
+        <View style={styles.headerContainer}>
+          <Image style={styles.partyIcon} source={require('../assets/partyPlay.png')} />
+          <Text style={styles.partyPlayText}>Party Play</Text>
+        </View>
+        <Text style={styles.gameLobbyText}>Game Lobby: SJ4Z</Text>
+          {/* {players.map((player) => {
+            <View style={styles.headerContainer} key={player.id}>
+              {player.avatar}
+              <Text style={styles.playerText}>{player.name}</Text>
+            </View>
+          })} */}
+          <View style={styles.accountsContainer}>
+            <View style={styles.accountContainer}>
+              <Image style={styles.avatarIcon} source={require('../assets/avatar.png')} />
+              <Text style={styles.playerText}>Haley</Text>
+            </View>
+            <View style={styles.accountContainer}>
+              <Image style={styles.avatarIcon} source={require('../assets/avatar.png')} />
+              <Text style={styles.playerText}>Matt</Text>
+            </View>
+            <View style={styles.accountContainer}>
+              <Image style={styles.avatarIcon} source={require('../assets/avatar.png')} />
+              <Text style={styles.playerText}>Trevor</Text>
+            </View>
+            <View style={styles.accountContainer}>
+              <Image style={styles.avatarIcon} source={require('../assets/avatar.png')} />
+              <Text style={styles.playerText}>Emil</Text>
+            </View>
+            <View style={styles.accountContainer}>
+              <Image style={styles.avatarIcon} source={require('../assets/avatar.png')} />
+              <Text style={styles.playerText}>Jamie</Text>
+            </View>
+          </View>
+        <View style={styles.headerContainer}>
+          <Button title="Leave" titleStyle={{ color: 'black' }} buttonStyle={styles.leaveButton} />
+          <Button title="Invite" titleStyle={{ color: 'black' }} buttonStyle={styles.inviteButton} />
+        </View>
+        <Button title="Start" titleStyle={{ color: 'black' }} buttonStyle={styles.invitePlayersButton} onPress={() => navigation.navigate('Question')}/>
+        </>
       </View>
-
-      <View style={styles.socialIconsContainer}>
-          <Icon name="facebook" type="font-awesome" color="#3b5998" size={24} />
-          <Icon name="instagram" type="font-awesome" color="#C13584" size={24} style={styles.iconSpacing} />
-          <Icon name="snapchat" type="font-awesome" color="#FFFC00" size={24} style={styles.iconSpacing} />
-          <Icon name="spotify" type="font-awesome" color="#1DB954" size={24} style={styles.iconSpacing} />
-      </View>
-      <Text style={styles.footerText}>COPYRIGHT © 2023 TUNEDIN</Text>
+      <Footer />
     </View>
+    </>
   );
 }

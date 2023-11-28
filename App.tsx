@@ -19,7 +19,7 @@ const Stack = createNativeStackNavigator();
 
 export default function App() {
   const userState = useUserState(window);
-  const initialRoute = userState.userToken ? "Welcome" : "Login";
+  const initialRoute = userState.userToken ? "Login" : "Login";
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName={initialRoute}>

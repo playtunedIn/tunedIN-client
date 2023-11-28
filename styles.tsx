@@ -11,6 +11,47 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
+  musicImg: {
+    marginTop: 50,
+    width: 1275,
+    height: 100
+  },
+  footerImg: {
+    width: 1475,
+    height: 185,
+    marginLeft: -20,
+    marginBottom: -19
+  },
+  logoImg: {
+    marginTop: -100,
+    width: 400,
+    height: 200
+  },
+  profileContainer: {
+    marginLeft: 900,
+    flexDirection: 'row'
+  },
+  profileImg: {
+    width: 50,
+    height: 50,
+    alignItems: 'flex-end'
+  },
+  profileText: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginRight: 10,
+    marginTop: 10
+  },
+  accountContainer: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    marginBotton: 60
+  },
+  accountsContainer: {
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    marginBotton: 20
+  },
   logoText: {
     fontSize: 30,
     fontWeight: 'bold',
@@ -23,8 +64,23 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    marginTop: 20
   },
   welcomeText: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 20,
+  },
+  partyPlayText: {
+    fontSize: 34,
+    fontWeight: 'bold',
+    marginBottom: 20,
+    marginTop: 10
+  },
+  playerText: {
+    fontSize: 22,
+  },
+  gameLobbyText: {
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 20,
@@ -41,6 +97,43 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     marginBottom: 20
   },
+  leaveButton: {
+    width: 120,
+    backgroundColor: '#FFC0CB',
+    paddingHorizontal: 60,
+    paddingVertical: 10,
+    marginBottom: 20,
+    marginRight: 10,
+    marginTop: 20,
+    flexDirection: "row"
+  },
+  inviteButton: {
+    width: 120,
+    backgroundColor: '#797EF6',
+    paddingHorizontal: 60,
+    paddingVertical: 10,
+    marginBottom: 20,
+    marginTop: 20,
+    flexDirection: "row"
+  },
+  partyIcon: {
+    width: 40,
+    height: 40,
+    marginRight: 10
+  },
+  avatarIcon: {
+    marginRight: 10,
+    width: 30,
+    height: 30
+  },
+  invitePlayersButton: {
+    width: 250,
+    backgroundColor: '#30D5C8',
+    paddingHorizontal: 60,
+    paddingVertical: 10,
+    marginBottom: 20,
+    flexDirection: "row"
+  },
   joinButton: {
     width: 250,
     backgroundColor: '#6200EE',
@@ -53,22 +146,25 @@ const styles = StyleSheet.create({
   joinCode: {
     width: 10
   },
-  socialIconsContainer: {
+  socialIconsContainerTop: {
     flexDirection: 'row',
-    marginTop: 20,  // Adjust the spacing as needed
+    marginTop: -75,
+    marginLeft: 1350,
     marginBottom: 20,  // Adjust the spacing as needed
-    alignItems: 'center',
-    justifyContent: 'space-between',   // To spread the icons across the width
-    paddingHorizontal: 40  // Add some padding to the left and right to adjust the icon positions
+  },
+  socialIconsContainerBottom: {
+    flexDirection: 'row',
+    marginLeft: 1325,
+    marginBottom: 20,
   },
   iconSpacing: {
     marginLeft: 20,
   },
   footerText: {
     fontSize: 16,
-    color: '#888',
+    color: 'white',
     textAlign: 'center',
-    marginBottom: 10,
+    marginTop: 125,
     fontWeight: 'bold'   // make the text a bit bold
   },
   });
