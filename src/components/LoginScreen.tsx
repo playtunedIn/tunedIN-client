@@ -7,7 +7,7 @@ import { RootStackParamList } from '../../navigationTypes';
 import styles from '../../styles';
 import useUserState from './hooks/useUserState';
 
-const API_LOGIN_URL = 'https://local.playtunedin-test.com:3001/login';
+const API_LOGIN_URL = 'https://localhost:3001/login';
 
 type LoginScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Login'>;
 

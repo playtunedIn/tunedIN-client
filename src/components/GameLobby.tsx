@@ -44,11 +44,10 @@ export function GameLobby({ navigation }: GameLobbyProps) {
   
   return (
     <>
-    <View style={styles.container}>
+    {/* <View style={styles.fullContainer}> */}
       <Header />
       <View style={styles.contentContainer}>
-        <>
-        <View style={styles.headerContainer}>
+        <View style={styles.rowContainer}>
           <Image style={styles.partyIcon} source={require('../assets/partyPlay.png')} />
           <Text style={styles.partyPlayText}>Party Play</Text>
         </View>
@@ -81,15 +80,14 @@ export function GameLobby({ navigation }: GameLobbyProps) {
               <Text style={styles.playerText}>Jamie</Text>
             </View>
           </View>
-        <View style={styles.headerContainer}>
+        <View style={styles.rowContainer}>
           <Button title="Leave" titleStyle={{ color: 'black' }} buttonStyle={styles.leaveButton} />
           <Button title="Invite" titleStyle={{ color: 'black' }} buttonStyle={styles.inviteButton} />
         </View>
         <Button title="Start" titleStyle={{ color: 'black' }} buttonStyle={styles.invitePlayersButton} onPress={() => navigation.navigate('Question')}/>
-        </>
       </View>
       <Footer />
-    </View>
+    {/* </View> */}
     </>
   );
 }

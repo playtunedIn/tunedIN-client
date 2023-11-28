@@ -4,6 +4,7 @@ export interface PlayersState {
 }
 
 export interface PlayerState {
+  userId: string;
   name: string;
   score: number;
   /**

@@ -11,36 +11,37 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
+  headingContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    paddingLeft: 10,
+    position: 'relative'
+  },
+  rowContainer: {
+    flexDirection: 'row',
+  },
   musicImg: {
-    marginTop: 50,
-    width: 1275,
-    height: 100
+    marginTop: 60,
+    width: '100%',
+    height: '20%'
   },
   footerImg: {
-    width: 1475,
+    width: '100%',
     height: 185,
-    marginLeft: -20,
-    marginBottom: -19
   },
   logoImg: {
-    marginTop: -100,
-    width: 400,
-    height: 200
-  },
-  profileContainer: {
-    marginLeft: 900,
-    flexDirection: 'row'
+    width: '50%',
+    height: '30%',
+    marginTop: -55,
+    paddingTop: 20,
+    paddingBottom: 62
   },
   profileImg: {
     width: 50,
     height: 50,
-    alignItems: 'flex-end'
-  },
-  profileText: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    marginRight: 10,
-    marginTop: 10
+    justifyContent: 'flex-end',
+    marginLeft: 140,
+    marginTop: -40
   },
   accountContainer: {
     flexDirection: 'row',
@@ -61,10 +62,10 @@ const styles = StyleSheet.create({
     color: '#6200EE',
   },
   contentContainer: {
-    flex: 1,
+    flex: 2,
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 20
+    marginTop: -100
   },
   welcomeText: {
     fontSize: 24,
@@ -146,16 +147,11 @@ const styles = StyleSheet.create({
   joinCode: {
     width: 10
   },
-  socialIconsContainerTop: {
+  socialIconsContainer: {
     flexDirection: 'row',
-    marginTop: -75,
-    marginLeft: 1350,
-    marginBottom: 20,  // Adjust the spacing as needed
-  },
-  socialIconsContainerBottom: {
-    flexDirection: 'row',
-    marginLeft: 1325,
-    marginBottom: 20,
+    justifyContent: "center", 
+    alignItems: "center", 
+    marginBottom: 20
   },
   iconSpacing: {
     marginLeft: 20,
@@ -164,8 +160,9 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: 'white',
     textAlign: 'center',
-    marginTop: 125,
-    fontWeight: 'bold'   // make the text a bit bold
+    marginTop: 90,
+    fontWeight: 'bold',   // make the text a bit bold
+    marginBottom: 20
   },
   });
   
