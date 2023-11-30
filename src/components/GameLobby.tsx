@@ -4,6 +4,7 @@ import { View, Text } from 'react-native';
 import { Button, Icon } from 'react-native-elements';
 import { RootStackParamList } from '../../navigationTypes';
 import styles from '../../styles';
+import { useAppSelector } from '@hooks/store/app-store';
 
 type GameLobbyNavigationProp = StackNavigationProp<RootStackParamList, 'GameLobby'>;
 
@@ -11,10 +12,12 @@ type GameLobbyProps = {
   navigation: GameLobbyNavigationProp;
 };
 
+
 export function GameLobby({ navigation }: GameLobbyProps) {
+  const roomId = useAppSelector(state => state.room);
   return (
     <View style={styles.container}>
-
+<Text>{JSON.stringify(roomId)}</Text>
 <View style={styles.headerContainer}>
         <Text style={styles.logoText}>tuned<Text style={styles.logoIN}>IN</Text></Text>
         <Icon name="music-note" size={30} color="#000" />
