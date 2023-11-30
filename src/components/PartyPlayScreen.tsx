@@ -17,7 +17,7 @@ type PartyPlayScreenProps = {
 
 export function PartyPlayScreen({ navigation }: PartyPlayScreenProps) {
   const [roomCode, setRoomCode] = useState('');
-  const { joinRoom, createRoom } = useMultiplayerClient();
+  const { joinRoom } = useMultiplayerClient();
 
   const roomState = useAppSelector(state => state.room.roomStatus);
   const userState = useUserState(window);
@@ -29,8 +29,7 @@ export function PartyPlayScreen({ navigation }: PartyPlayScreenProps) {
   }, [roomState]);
 
   async function joinLobby() {
-    let userDisplayName: string;
-    userDisplayName = userState.user?.display_name ?? 'Default Name';
+    const userDisplayName = userState.user?.display_name ?? 'Default Name';
 
     joinRoom(roomCode, userDisplayName); 
   }
