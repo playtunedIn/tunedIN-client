@@ -1,4 +1,4 @@
-import { useAppDispatch } from '@hooks/store/app-store';
+import { useAppDispatch } from '../../../store/app-store';
 import { updatePlayersState } from '@store/multiplayer/players-slice/players-slice';
 import type { PlayerState } from '@store/multiplayer/players-slice/players-slice.types';
 import { updateQuestionsState } from '@store/multiplayer/questions-slice/questions-slice';

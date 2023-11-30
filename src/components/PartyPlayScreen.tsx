@@ -1,11 +1,12 @@
 import { StackNavigationProp } from '@react-navigation/stack';
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text } from 'react-native';
-import { Button, Avatar, Input, Icon } from 'react-native-elements';
+import { Button, Input, Icon } from 'react-native-elements';
 import { RootStackParamList } from '../../navigationTypes';
 import styles from '../../styles';
-import { useMultiplayerClient } from '../hooks/multiplayer/multiplayer-client';
-import { useAppSelector } from '../hooks/store/app-store';
+import { useMultiplayerClient } from '@hooks/multiplayer/multiplayer-client';
+import { useAppSelector } from '@hooks/store/app-store';
+import useUserState from './hooks/useUserState';
 
 type PartyPlayScreenNavigationProp = StackNavigationProp<RootStackParamList, 'PartyPlay'>;
 
@@ -14,9 +15,18 @@ type PartyPlayScreenProps = {
 };
 
 export function PartyPlayScreen({ navigation }: PartyPlayScreenProps) {
-  const { createRoom } = useMultiplayerClient();
+  const [roomCode, setRoomCode] = useState('');
+  const { joinRoom, createRoom } = useMultiplayerClient();
 
-  const roomId = useAppSelector(state => state.room.roomId);
+  const userState = useUserState(window);
+
+  function joinLobby() {
+    let userDisplayName: string;
+    userDisplayName = userState.user?.display_name ?? 'Default Name';
+
+    joinRoom(roomCode, userDisplayName);
+    navigation.navigate('GameLobby');
+  }
 
   return (
     <View style={styles.container}>
@@ -28,14 +38,13 @@ export function PartyPlayScreen({ navigation }: PartyPlayScreenProps) {
 
       <View style={styles.contentContainer}>
         <Text style={styles.welcomeText}>Party Play</Text>
-        <Text>{roomId}</Text>
         <Text style={styles.descriptionText}>Enter Code to Join Room</Text>
-          <Input placeholder="Enter 4-digit code" maxLength={4} inputStyle={styles.joinCode} />
-          <Button title="  Join Room  " buttonStyle={styles.playButton} onPress={() => navigation.navigate('GameLobby')}/>
+          <Input placeholder="Enter 4-digit code" maxLength={4} inputStyle={styles.joinCode} value={roomCode} onChangeText={setRoomCode}/>
+          <Button title="  Join Room  " buttonStyle={styles.playButton} onPress={() => joinLobby()}/>
           <Text></Text>
         <Text style={styles.footerText}>or</Text>
         <Text></Text>
-        <Button title="Create Room" buttonStyle={styles.playButton} onPress={() => createRoom()}/>
+        <Button title="Create Room" buttonStyle={styles.playButton} onPress={() => createRoom(5)}/>
       </View>
 
       <View style={styles.socialIconsContainer}>
