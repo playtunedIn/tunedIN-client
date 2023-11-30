@@ -1,5 +1,5 @@
 import { StackNavigationProp } from '@react-navigation/stack';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text } from 'react-native';
 import { Button, Input, Icon } from 'react-native-elements';
 import { RootStackParamList } from '../../navigationTypes';
@@ -7,6 +7,7 @@ import styles from '../../styles';
 import { useMultiplayerClient } from '@hooks/multiplayer/multiplayer-client';
 import { useAppSelector } from '@hooks/store/app-store';
 import useUserState from './hooks/useUserState';
+import { ROOM_STATUS } from '@store/multiplayer/room-slice/room-slice.constants';
 
 type PartyPlayScreenNavigationProp = StackNavigationProp<RootStackParamList, 'PartyPlay'>;
 
@@ -18,20 +19,25 @@ export function PartyPlayScreen({ navigation }: PartyPlayScreenProps) {
   const [roomCode, setRoomCode] = useState('');
   const { joinRoom, createRoom } = useMultiplayerClient();
 
+  const roomState = useAppSelector(state => state.room.roomStatus);
   const userState = useUserState(window);
 
-  function joinLobby() {
+  useEffect(() => {
+    if (roomState === ROOM_STATUS.LOBBY) {
+      navigation.navigate('GameLobby');
+  }
+  }, [roomState]);
+
+  async function joinLobby() {
     let userDisplayName: string;
     userDisplayName = userState.user?.display_name ?? 'Default Name';
 
-    joinRoom(roomCode, userDisplayName);
-    navigation.navigate('GameLobby');
+    joinRoom(roomCode, userDisplayName); 
   }
 
   return (
     <View style={styles.container}>
-
-<View style={styles.headerContainer}>
+      <View style={styles.headerContainer}>
         <Text style={styles.logoText}>tuned<Text style={styles.logoIN}>IN</Text></Text>
         <Icon name="music-note" size={30} color="#000" />
       </View>
@@ -44,7 +50,7 @@ export function PartyPlayScreen({ navigation }: PartyPlayScreenProps) {
           <Text></Text>
         <Text style={styles.footerText}>or</Text>
         <Text></Text>
-        <Button title="Create Room" buttonStyle={styles.playButton} onPress={() => createRoom(5)}/>
+        <Button title="Create Room" buttonStyle={styles.playButton} onPress={() => navigation.navigate('RoundSelection')}/>
       </View>
 
       <View style={styles.socialIconsContainer}>
