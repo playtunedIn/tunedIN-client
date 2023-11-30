@@ -7,7 +7,11 @@ import { RootStackParamList } from '../../navigationTypes';
 import styles from '../../styles';
 import useUserState from './hooks/useUserState';
 
+const showMockTokenButton = process.env.NODE_ENV !== "production";
+
+
 const API_LOGIN_URL = 'https://localhost:3001/login';
+const MOCK_TOKEN_URL = 'https://localhost:3001/gen-mock-token';
 
 type LoginScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Login'>;
 
@@ -24,6 +28,8 @@ export function LoginScreen({ navigation }: LoginScreenProps) {
 
   const onLogin = () => window ? window.location.href = API_LOGIN_URL : Linking.openURL(API_LOGIN_URL);
 
+  const generateMockToken = () => window.location.href = MOCK_TOKEN_URL;
+
   return (
     <View style={styles.container}>
       <View style={styles.headerContainer}>
@@ -37,7 +43,8 @@ export function LoginScreen({ navigation }: LoginScreenProps) {
             TunedIN uses your Spotify music history to create a fun and interactive game for you and your friends! Click the button below to link your Spotify account now.
         </Text>
 
-        <Button title="Link Spotify Account" buttonStyle={styles.playButton} onPress={onLogin}/>
+        <Button title="Link Spotify Account" buttonStyle={styles.playButton} onPress={onLogin} />
+        { showMockTokenButton && <Button title="Generate Mock Token" buttonStyle={styles.playButton} onPress={generateMockToken} /> }
       </View>
 
       <View style={styles.socialIconsContainer}>
