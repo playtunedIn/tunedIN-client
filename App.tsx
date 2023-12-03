@@ -7,7 +7,7 @@ import { PartyPlayScreen } from './src/components/PartyPlayScreen';
 import React from 'react';
 import { RoundSelection } from './src/components/RoundSelection';
 import { HostLobby } from './src/components/HostLobby';
-import { GameLobby } from './src/components/GameLobby';
+import { GameLobby } from './src/components/gameLobby/GameLobby';
 import { QuestionScreen } from './src/components/QuestionScreen';
 import { QuestionAnswerScreen } from './src/components/QuestionAnswerScreen';
 import { RoundResults } from './src/components/RoundResults';

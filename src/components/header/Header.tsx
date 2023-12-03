@@ -1,7 +1,6 @@
 import React from 'react';
-import { View, Text, Image, ImageBackground} from 'react-native';
-import { Button, Avatar, Input, Icon } from 'react-native-elements';
-import styles from '../../../styles';
+import { View, Image, ImageBackground} from 'react-native';
+import styles from './styles';
 
 
 export function Header() {
