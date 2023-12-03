@@ -17,6 +17,7 @@ import { SessionWinner } from './src/components/SessionWinner';
 import useUserState from './src/components/hooks/useUserState';
 import { MultiplayerProvider } from './src/hooks/multiplayer';
 import { setupStore } from './src/store/store';
+import { Header } from './src/components/header/Header';
 
 
 const Stack = createNativeStackNavigator();

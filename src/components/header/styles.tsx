@@ -1,30 +1,31 @@
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
-    musicImg: {
-        marginTop: 60,
-        width: '100%',
-        height: '20%'
-    },
     headingContainer: {
-        flex: 1,
+        marginBottom: 30
+    },
+    topHeaderRow: {
         flexDirection: 'row',
-        paddingLeft: 10,
-        position: 'relative'
     },
     logoImg: {
-        width: '50%',
+        width: '60%',
         height: '30%',
-        marginTop: -55,
-        paddingTop: 20,
-        paddingBottom: 62
+        paddingTop: 60,
+        paddingBottom: 60
     },
     profileImg: {
         width: 50,
         height: 50,
-        justifyContent: 'flex-end',
-        marginLeft: 140,
-        marginTop: -40
+        position: 'absolute',
+        right: 0,
+        marginTop: 30,
+        marginRight: 10
+    },
+    musicImg: {
+        width: '100%',
+        height: '5%',
+        paddingTop: 10,
+        paddingBottom: 10
     },
 
 });

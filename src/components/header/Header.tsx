@@ -6,11 +6,12 @@ import styles from './styles';
 export function Header() {
   
   return (
-    <ImageBackground source={require('../../assets/music-notes.png')} resizeMode="cover" style={styles.musicImg}>
-      <View style={styles.headingContainer}>
+    <View style={styles.headingContainer}>
+      <View style={styles.topHeaderRow}>
         <Image style={styles.logoImg} source={require('../../assets/TunedIN-logo.png')} />
         <Image style={styles.profileImg} source={require('../../assets/avatar.png')} />
       </View>
-    </ImageBackground>
+      <Image style={styles.musicImg} source={require('../../assets/music-notes.png')} />
+    </View>
   );
 }

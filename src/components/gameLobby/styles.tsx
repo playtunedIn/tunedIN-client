@@ -2,11 +2,8 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
     contentContainer: {
-        flex: 2,
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginTop: -100
-      },
+        alignItems: 'center',      
+    },
     rowContainer: {
         flexDirection: 'row',
     },
@@ -15,7 +12,7 @@ const styles = StyleSheet.create({
         height: 40,
         marginRight: 10,
         marginTop: 10
-      },
+    },
     partyPlayText: {
         fontSize: 34,
         fontWeight: 'bold',
