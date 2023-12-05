@@ -9,7 +9,6 @@ import useUserState from './hooks/useUserState';
 
 const showMockTokenButton = process.env.NODE_ENV !== "production";
 
-
 const API_LOGIN_URL = 'https://localhost:3001/login';
 const MOCK_TOKEN_URL = 'https://localhost:3001/gen-mock-token';
 
