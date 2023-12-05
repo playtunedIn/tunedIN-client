@@ -14,13 +14,10 @@ type GameLobbyProps = {
   navigation: GameLobbyNavigationProp;
 };
 
-//need to get players
-//need to get host and disable start unless host
-//need to get room code
-
 export function GameLobby({ navigation }: GameLobbyProps) {
   const roomState = useAppSelector(state => state.room);
   const playerState = useAppSelector(state => state.players);
+
 
   return (
     <>

@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import Cookie from 'js-cookie';
 
 const useUserState = (window: Window) => {
     const [userToken, setUserToken] = useState<string | null>(localStorage.getItem("TUNEDIN_TOKEN"));
@@ -13,7 +12,6 @@ const useUserState = (window: Window) => {
             const token = parsedUrl.searchParams.get("token")!;
             localStorage.setItem("TUNEDIN_TOKEN", token);
             setUserToken(token);
-            Cookie.set("TUNEDIN_TOKEN", token);
         }
     }, [window.location.href, setUserToken]);
 
