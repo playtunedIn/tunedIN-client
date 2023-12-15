@@ -38,7 +38,7 @@ export function RoundSelection({ navigation }: RoundSelectionProps) {
   useEffect(() => {
     if (roomId && waitingForRoomCreate) {
       setWaitingForRoomCreate(false);
-      navigation.navigate('HostLobby');
+      navigation.navigate('GameLobby');
     }
   }, [roomId, waitingForRoomCreate])
 
