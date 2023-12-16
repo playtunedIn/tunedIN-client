@@ -14,7 +14,7 @@ describe('Update Players Handlers', () => {
       answers: [],
     };
 
-    const store = setupStore();
+    const {store} = setupStore();
     const { result, unmount } = renderHook(() => useUpdatePlayersHandlers(), {
       wrapper: wrapMultiplayerProvider({ store }),
     });

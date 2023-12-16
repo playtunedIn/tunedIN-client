@@ -8,7 +8,7 @@ import { ROOM_STATUS } from '@store/multiplayer/room-slice/room-slice.constants'
 
 describe('Update Players Handlers', () => {
   it('should add player', () => {
-    const store = setupStore();
+    const {store} = setupStore();
     const { result, unmount } = renderHook(() => useUpdateRoomHandlers(), {
       wrapper: wrapMultiplayerProvider({ store }),
     });

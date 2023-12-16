@@ -21,7 +21,7 @@ describe('Subscriber Handler', () => {
       type: 'NO HANDLER',
     } as any;
 
-    const store = setupStore();
+    const {store} = setupStore();
     const { result, unmount } = renderHook(() => useSubscriberHandler(), {
       wrapper: wrapMultiplayerProvider({ store }),
     });

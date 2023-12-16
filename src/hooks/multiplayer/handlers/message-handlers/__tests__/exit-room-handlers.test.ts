@@ -21,7 +21,7 @@ describe('Create Room Handlers', () => {
   });
 
   it('should call console log', () => {
-    const store = setupStore();
+    const {store} = setupStore();
     const { result, unmount } = renderHook(() => useExitRoomResponseHandlers(), {
       wrapper: wrapMultiplayerProvider({ store }),
     });
@@ -33,7 +33,7 @@ describe('Create Room Handlers', () => {
   });
 
   it('should call console error', () => {
-    const store = setupStore();
+    const {store} = setupStore();
     const { result, unmount } = renderHook(() => useExitRoomResponseHandlers(), {
       wrapper: wrapMultiplayerProvider({ store }),
     });

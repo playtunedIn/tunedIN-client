@@ -22,7 +22,7 @@ describe('Create Room Handlers', () => {
   });
 
   it('dispatches setting new game properties', () => {
-    const store = setupStore();
+    const {store} = setupStore();
     const { result, unmount } = renderHook(() => useCreateRoomResponseHandlers(), {
       wrapper: wrapMultiplayerProvider({ store }),
     });
@@ -46,7 +46,7 @@ describe('Create Room Handlers', () => {
   });
 
   it('updates room error code on failure', () => {
-    const store = setupStore();
+    const {store} = setupStore();
     const { result, unmount } = renderHook(() => useCreateRoomResponseHandlers(), {
       wrapper: wrapMultiplayerProvider({ store }),
     });

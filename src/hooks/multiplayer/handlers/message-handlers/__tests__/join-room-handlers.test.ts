@@ -21,7 +21,7 @@ describe('Join Room Handlers', () => {
   });
 
   it('dispatches setting new game properties', () => {
-    const store = setupStore();
+    const {store} = setupStore();
     const { result, unmount } = renderHook(() => useJoinRoomResponseHandlers(), {
       wrapper: wrapMultiplayerProvider({ store }),
     });
@@ -45,7 +45,7 @@ describe('Join Room Handlers', () => {
   });
 
   it('updates room error code on failure', () => {
-    const store = setupStore();
+    const {store} = setupStore();
     const { result, unmount } = renderHook(() => useJoinRoomResponseHandlers(), {
       wrapper: wrapMultiplayerProvider({ store }),
     });

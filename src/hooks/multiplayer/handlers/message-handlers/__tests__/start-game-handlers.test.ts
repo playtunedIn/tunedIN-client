@@ -11,7 +11,7 @@ describe('Create Room Handlers', () => {
   });
 
   it('updates room error code on failure', () => {
-    const store = setupStore();
+    const {store} = setupStore();
     const { result, unmount } = renderHook(() => useStartGameResponseHandlers(), {
       wrapper: wrapMultiplayerProvider({ store }),
     });
