@@ -5,6 +5,11 @@ const useUserState = (window: Window) => {
 
     const [user, setUser] = useState<User | null>(null);
 
+    const logout = () => {
+        localStorage.removeItem("TUNEDIN_TOKEN");
+        setUserToken(null);
+    }
+
     // set token from query params if it exists
     useEffect(() => {
         const parsedUrl = window?.location?.href && new URL(window?.location?.href);
@@ -24,15 +29,13 @@ const useUserState = (window: Window) => {
                     },
                 });
                 if (accessResponse.status === 403) {
-                    localStorage.removeItem("TUNEDIN_TOKEN");
-                    setUserToken(null);
+                    logout();
                 } else if (accessResponse.ok) {
                     const body = await accessResponse.json();
                     setUser(body.user);
                 }
             } catch(e) {
-                localStorage.removeItem("TUNEDIN_TOKEN");
-                setUserToken(null);
+                logout();
             }
         };
         if (userToken) {
@@ -42,7 +45,8 @@ const useUserState = (window: Window) => {
 
     return {
         userToken,
-        user
+        user,
+        logout
     }
 
 }

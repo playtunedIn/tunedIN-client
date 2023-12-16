@@ -28,6 +28,10 @@ export function RoundSelection({ navigation }: RoundSelectionProps) {
     createRoom(rounds);
   }
 
+  const onCancel = () => {
+    navigation.navigate('PartyPlay');
+  }
+
   // get room id, which won't exist until after the room has been created
   const roomId = useAppSelector(state => state.room.roomId);
 
@@ -54,7 +58,7 @@ export function RoundSelection({ navigation }: RoundSelectionProps) {
         )}
 
         <Text></Text>
-        <Button title="Cancel" buttonStyle={styles.playButton} />
+        <Button title="Cancel" buttonStyle={styles.playButton} onPress={onCancel}/>
         <Button title="Create Room" buttonStyle={styles.playButton} onPress={onCreateRoom}/>
       </View>
 
