@@ -7,6 +7,7 @@ import { Footer } from '../footer/Footer';
 import { Header } from '../header/Header';
 import { useAppSelector } from '../../hooks/store/app-store';
 import styles from './styles';
+import { useMultiplayerClient } from '@hooks/multiplayer';
 
 type GameLobbyNavigationProp = StackNavigationProp<RootStackParamList, 'GameLobby'>;
 
@@ -18,6 +19,7 @@ export function GameLobby({ navigation }: GameLobbyProps) {
   const roomState = useAppSelector(state => state.room);
   const playerState = useAppSelector(state => state.players);
 
+  const {exitRoom} = useMultiplayerClient();
 
   return (
     <>
@@ -39,7 +41,7 @@ export function GameLobby({ navigation }: GameLobbyProps) {
             })}
             </View>
           <View style={styles.rowContainer}>
-            <Button title="Leave" titleStyle={{ color: 'black' }} buttonStyle={styles.leaveButton} />
+            <Button title="Leave" titleStyle={{ color: 'black' }} buttonStyle={styles.leaveButton} onPress={exitRoom} />
             <Button title="Invite" titleStyle={{ color: 'black' }} buttonStyle={styles.inviteButton} />
           </View>
           <Button title="Start" titleStyle={{ color: 'black' }} buttonStyle={styles.startButton} onPress={() => navigation.navigate('Question')}/>

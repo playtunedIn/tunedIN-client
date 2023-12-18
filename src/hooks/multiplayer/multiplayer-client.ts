@@ -1,5 +1,6 @@
 import {
   CREATE_ROOM_MESSAGE,
+  EXIT_ROOM_MESSAGE,
   JOIN_ROOM_MESSAGE,
   START_GAME_MESSAGE,
 } from '@hooks/multiplayer/handlers/socket-handlers.constants';
@@ -24,8 +25,7 @@ export const useMultiplayerClient = () => {
   };
 
   const exitRoom = () => {
-    // TODO: Implement in SPOT-49
-    closeConnection();
+    sendMessage(EXIT_ROOM_MESSAGE, { });
   };
 
   return {
