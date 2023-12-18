@@ -22,8 +22,10 @@ const useRedirectToCurrentScreen = (room: RoomState, navigation: WelcomeScreenNa
         case ROOM_STATUS.LOBBY:
         case ROOM_STATUS.LOADING_GAME: 
           navigation.navigate("GameLobby");
+          break;
         case ROOM_STATUS.IN_QUESTION:
           navigation.navigate("Question");
+          break;
       }
     }
 }
