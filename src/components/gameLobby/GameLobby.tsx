@@ -19,7 +19,7 @@ export function GameLobby({ navigation }: GameLobbyProps) {
   const roomState = useAppSelector(state => state.room);
   const playerState = useAppSelector(state => state.players);
 
-  const {exitRoom} = useMultiplayerClient();
+  const {leaveRoom} = useMultiplayerClient();
 
   return (
     <>
@@ -41,7 +41,7 @@ export function GameLobby({ navigation }: GameLobbyProps) {
             })}
             </View>
           <View style={styles.rowContainer}>
-            <Button title="Leave" titleStyle={{ color: 'black' }} buttonStyle={styles.leaveButton} onPress={exitRoom} />
+            <Button title="Leave" titleStyle={{ color: 'black' }} buttonStyle={styles.leaveButton} onPress={leaveRoom} />
             <Button title="Invite" titleStyle={{ color: 'black' }} buttonStyle={styles.inviteButton} />
           </View>
           <Button title="Start" titleStyle={{ color: 'black' }} buttonStyle={styles.startButton} onPress={() => navigation.navigate('Question')}/>

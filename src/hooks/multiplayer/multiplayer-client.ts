@@ -1,6 +1,6 @@
 import {
   CREATE_ROOM_MESSAGE,
-  EXIT_ROOM_MESSAGE,
+  LEAVE_ROOM_MESSAGE,
   JOIN_ROOM_MESSAGE,
   START_GAME_MESSAGE,
 } from '@hooks/multiplayer/handlers/socket-handlers.constants';
@@ -24,8 +24,8 @@ export const useMultiplayerClient = () => {
     sendMessage(START_GAME_MESSAGE, { roomId });
   };
 
-  const exitRoom = () => {
-    sendMessage(EXIT_ROOM_MESSAGE, { });
+  const leaveRoom = () => {
+    sendMessage(LEAVE_ROOM_MESSAGE, { });
   };
 
   return {
@@ -33,6 +33,6 @@ export const useMultiplayerClient = () => {
     createRoom,
     joinRoom,
     startGame,
-    exitRoom,
+    leaveRoom,
   };
 };
