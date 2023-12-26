@@ -21,6 +21,11 @@ export function GameLobby({ navigation }: GameLobbyProps) {
 
   const {leaveRoom} = useMultiplayerClient();
 
+  const onLeaveRoom = () => {
+    leaveRoom();
+    navigation.navigate("Welcome");
+  }
+
   return (
     <>
     <Header />
@@ -41,7 +46,7 @@ export function GameLobby({ navigation }: GameLobbyProps) {
             })}
             </View>
           <View style={styles.rowContainer}>
-            <Button title="Leave" titleStyle={{ color: 'black' }} buttonStyle={styles.leaveButton} onPress={leaveRoom} />
+            <Button title="Leave" titleStyle={{ color: 'black' }} buttonStyle={styles.leaveButton} onPress={onLeaveRoom} />
             <Button title="Invite" titleStyle={{ color: 'black' }} buttonStyle={styles.inviteButton} />
           </View>
           <Button title="Start" titleStyle={{ color: 'black' }} buttonStyle={styles.startButton} onPress={() => navigation.navigate('Question')}/>
