@@ -28,7 +28,7 @@ export default function App() {
     <Provider store={setupStore()}>
     <MultiplayerProvider >
     <NavigationContainer>
-      <Stack.Navigator initialRouteName={initialRoute}>
+      <Stack.Navigator initialRouteName={initialRoute} screenOptions={{headerShown: false}}>
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Welcome" component={WelcomeScreen} />
         <Stack.Screen name="PartyPlay" component={PartyPlayScreen} />

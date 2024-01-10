@@ -3,13 +3,8 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFF',
     padding: 20,
     justifyContent: 'space-between',
-  },
-  headerContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
   },
   logoText: {
     fontSize: 30,
@@ -21,7 +16,6 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
   },
   welcomeText: {
