@@ -7,6 +7,10 @@ import { SOCKET_READY_STATES } from './handlers/socket-handlers.constants';
 
 const _socket = createSocket();
 
+type Props = {
+  loggedIn: boolean;
+} & PropsWithChildren;
+
 interface SocketContextValues {
   socket: WebSocket;
   status: SocketReadyState;
@@ -23,13 +27,15 @@ export const SocketContext = createContext<SocketContextValues>({
 /**
  * Creates a socket and shares that socket with any multiplayer client within its context
  */
-const MultiplayerProvider = ({ children }: PropsWithChildren) => {
+const MultiplayerProvider = ({ loggedIn, children }: Props) => {
   const [socket, setSocket] = useState(_socket);
 
   // We don't have reactivity around socket.readyState so need to create our own
   const [status, setStatus] = useState<SocketReadyState>(SOCKET_READY_STATES.CONNECTING);
   const [pingTimeout, setPingTimeout] = useState<NodeJS.Timeout | undefined>(undefined);
-  const [needsRecovery, setNeedsRecovery] = useState(false);
+  // default to true so we check with the server to get current state
+  console.log({loggedIn})
+  const [needsRecovery, setNeedsRecovery] = useState(loggedIn);
 
   const { onMessage, onOpen, onError, onClose, onPing } = useSocketHandlers(
     socket,

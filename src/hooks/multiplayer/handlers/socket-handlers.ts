@@ -26,7 +26,7 @@ export const useSocketHandlers = (
 
   const onOpen = () => {
     setStatus(SOCKET_READY_STATES.OPEN);
-
+    console.log({needsRecovery})
     if (needsRecovery) {
       socket.send(JSON.stringify({ type: 'recoverRoomSession' }));
     }

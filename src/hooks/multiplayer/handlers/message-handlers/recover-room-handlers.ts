@@ -14,6 +14,7 @@ export const useRecoverRoomSessionHandlers = (setNeedsRecovery: React.Dispatch<R
   const dispatch = useAppDispatch();
 
   const recoverRoomSessionResponseHandler = (data: RecoverRoomSessionResponse) => {
+    console.log("recover room response", {data})
     dispatch(updateRoomState(data.state));
     setNeedsRecovery(false);
   };

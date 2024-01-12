@@ -24,9 +24,10 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   const userState = useUserState(window);
   const initialRoute = userState.userToken ? "Welcome" : "Login";
+  console.log({initialRoute})
   return (
     <Provider store={setupStore()}>
-    <MultiplayerProvider >
+    <MultiplayerProvider loggedIn={!!userState.userToken}>
     <NavigationContainer>
       <Stack.Navigator initialRouteName={initialRoute}>
         <Stack.Screen name="Login" component={LoginScreen} />

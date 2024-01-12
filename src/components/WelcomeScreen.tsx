@@ -15,7 +15,7 @@ type WelcomeScreenProps = {
 
 export function WelcomeScreen({ navigation }: WelcomeScreenProps) {
 
-  const {user, logout} = useUserState(window);
+  const {isLoggedIn, user, logout} = useUserState(window);
 
   const onBackToHome = () => {
     logout();
