@@ -33,7 +33,6 @@ export function LoginScreen({ navigation }: LoginScreenProps) {
 
   return (
     <>
-      <Header />
       <View style={styles.container}>
         <View style={styles.contentContainer}>
           <Text style={styles.welcomeText}>Welcome to tunedIN!</Text>

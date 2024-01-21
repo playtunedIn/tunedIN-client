@@ -26,7 +26,6 @@ export function WelcomeScreen({ navigation }: WelcomeScreenProps) {
 
   return (
     <>
-    <Header />
       <View style={styles.container}>
         {!!user && <View style={styles.contentContainer}>
           <Text style={styles.welcomeText}>Welcome to tunedIN {user?.display_name}!</Text>

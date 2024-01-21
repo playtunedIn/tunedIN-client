@@ -38,7 +38,6 @@ export function PartyPlayScreen({ navigation }: PartyPlayScreenProps) {
 
   return (
     <>
-      <Header />
         <View style={styles.container}>
           <View style={styles.contentContainer}>
             <Text style={styles.welcomeText}>Party Play</Text>

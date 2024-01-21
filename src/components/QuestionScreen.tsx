@@ -16,7 +16,6 @@ type QuestionProps = {
 export function QuestionScreen({ navigation }: QuestionProps) {
   return (
     <>
-      <Header />
         <View style={styles.container}>
           <View style={styles.contentContainer}>
             <Text style={styles.welcomeText}>Party Play</Text>

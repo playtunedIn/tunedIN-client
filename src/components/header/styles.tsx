@@ -5,24 +5,22 @@ const styles = StyleSheet.create({
         display: 'flex',
         marginBottom: 30,
     },
-    topHeaderRow: {
-        flexDirection: 'row',
-    },
     logoImg: {
         width: '50%',
         height: '30%',
         paddingTop: 60,
-        marginLeft: 10,
-        marginRight: 10,
-        paddingBottom: 20
+        paddingBottom: 30,
+        marginLeft: 5,
+        resizeMode: 'contain',
+        
     },
     profileImg: {
         width: 50,
         height: 50,
         position: 'absolute',
         right: 0,
-        marginTop: 10,
-        marginRight: 10
+        marginTop: 15,
+        marginRight: 15
     },
     musicImg: {
         width: '100%',

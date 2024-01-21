@@ -18,7 +18,6 @@ import { MultiplayerProvider } from './src/hooks/multiplayer';
 import { setupStore } from './src/store/store';
 import { Header } from './src/components/header/Header';
 
-
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -28,7 +27,7 @@ export default function App() {
     <Provider store={setupStore()}>
     <MultiplayerProvider >
     <NavigationContainer>
-      <Stack.Navigator initialRouteName={initialRoute} screenOptions={{headerShown: false}}>
+      <Stack.Navigator initialRouteName={initialRoute} screenOptions={{header: () => <Header />}}>
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Welcome" component={WelcomeScreen} />
         <Stack.Screen name="PartyPlay" component={PartyPlayScreen} />
