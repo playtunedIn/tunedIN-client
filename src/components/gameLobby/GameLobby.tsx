@@ -18,7 +18,6 @@ export function GameLobby({ navigation }: GameLobbyProps) {
   const roomState = useAppSelector(state => state.room);
   const playerState = useAppSelector(state => state.players);
 
-
   return (
     <>
     <Header />

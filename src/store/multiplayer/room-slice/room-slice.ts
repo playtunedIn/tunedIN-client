@@ -22,9 +22,9 @@ const roomSlice = createSlice({
     updateRoomStatus: (state, action: PayloadAction<RoomStatus>) => {
       state.roomStatus = action.payload;
     },
-    updateRoomState: (_, action: PayloadAction<RoomState>) => {
-      console.log({action})
-      return action.payload;
+    updateRoomState: (state, action: PayloadAction<RoomState>) => {
+      state.roomId = action.payload.roomId;
+      state.roomStatus = action.payload.roomStatus;
     },
   },
 });

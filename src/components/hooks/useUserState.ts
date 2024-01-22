@@ -18,6 +18,8 @@ const useUserState = (window: Window) => {
             const token = urlParams.searchParams.get("token")!;
             localStorage.setItem("TUNEDIN_TOKEN", token);
             setUserToken(token);
+            urlParams.searchParams.delete("token")
+            window.location.replace(urlParams.toString());
         }
     }, [urlParams, setUserToken]);
 

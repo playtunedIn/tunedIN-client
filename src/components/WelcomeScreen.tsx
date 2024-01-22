@@ -33,7 +33,6 @@ const useRedirectToCurrentScreen = (room: RoomState, navigation: WelcomeScreenNa
 export function WelcomeScreen({ navigation }: WelcomeScreenProps) {
 
   const roomState = useAppSelector(store => store.room);
-  console.log({roomState})
   const {user, logout} = useUserState(window);
 
   useRedirectToCurrentScreen(roomState, navigation);

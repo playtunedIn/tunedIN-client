@@ -13,8 +13,8 @@ import {
 export const createSocket = () => new WebSocketWrapper(`wss://localhost:3001/ws/multiplayer`);
 
 export const useSocketHandlers = (
-  socket: WebSocketWrapper,
-  setSocket: React.Dispatch<React.SetStateAction<WebSocketWrapper>>,
+  socket: WebSocketWrapper | null,
+  setSocket: React.Dispatch<React.SetStateAction<WebSocketWrapper | null>>,
   setStatus: React.Dispatch<React.SetStateAction<SocketReadyState>>,
   pingTimeout: NodeJS.Timeout | undefined,
   setPingTimeout: React.Dispatch<React.SetStateAction<NodeJS.Timeout | undefined>>,
@@ -23,12 +23,10 @@ export const useSocketHandlers = (
 ) => {
   let hasSocketError = false;
   const { messageHandlers } = useSocketMessageHandlers(setNeedsRecovery);
-
   const onOpen = () => {
     setStatus(SOCKET_READY_STATES.OPEN);
-    console.log({needsRecovery})
     if (needsRecovery) {
-      socket.send(JSON.stringify({ type: 'recoverRoomSession' }));
+      socket?.send(JSON.stringify({ type: 'recoverRoomSession' }));
     }
   };
 
@@ -54,7 +52,7 @@ export const useSocketHandlers = (
 
     setPingTimeout(
       setTimeout(() => {
-        socket.close();
+        socket?.close();
         setNeedsRecovery(true);
         reconnectSocket();
       }, SOCKET_PING_TIMEOUT)
