@@ -2,30 +2,32 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
     headingContainer: {
-        marginBottom: 30
-    },
-    topHeaderRow: {
-        flexDirection: 'row',
+        display: 'flex',
+        marginBottom: 30,
     },
     logoImg: {
-        width: '60%',
-        height: '30%',
+        flex: 1,
+        width: '100%',
+        height: '100%',
         paddingTop: 60,
-        paddingBottom: 60
+        paddingBottom: 30,
+        resizeMode: 'contain',
     },
     profileImg: {
-        width: 50,
-        height: 50,
+        width: 40,
+        height: 40,
         position: 'absolute',
         right: 0,
-        marginTop: 30,
+        marginTop: 10,
         marginRight: 10
     },
     musicImg: {
         width: '100%',
-        height: '5%',
-        paddingTop: 10,
-        paddingBottom: 10
+        height: '10%',
+        marginTop: -10,
+        paddingTop: 15,
+        paddingBottom: 15,
+        resizeMode: 'repeat'
     },
 
 });

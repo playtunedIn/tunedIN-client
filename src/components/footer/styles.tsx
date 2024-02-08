@@ -6,7 +6,8 @@ const styles = StyleSheet.create({
         height: 'auto',
         flex: 1,
         position: 'absolute',
-        bottom: 0
+        bottom: 0,
+        resizeMode: 'cover'
       },
     footerText: {
         fontSize: 16,

@@ -28,7 +28,6 @@ export function GameLobby({ navigation }: GameLobbyProps) {
 
   return (
     <>
-    <Header />
         <View style={styles.contentContainer}>
           <View style={styles.rowContainer}>
             <Image style={styles.partyIcon} source={require('../../assets/partyPlay.png')} />
