@@ -15,7 +15,12 @@ type WelcomeScreenProps = {
 
 export function WelcomeScreen({ navigation }: WelcomeScreenProps) {
 
-  const {user} = useUserState(window);
+  const {user, logout} = useUserState(window);
+
+  const onBackToHome = () => {
+    logout();
+    navigation.navigate('Login')
+  }
 
   return (
     <View style={styles.container}>
@@ -34,7 +39,7 @@ export function WelcomeScreen({ navigation }: WelcomeScreenProps) {
       </View>}
       {!user && <View style={styles.contentContainer}>
         <Text style={styles.welcomeText}>There was an issue authenticating</Text>
-          <Button title="Back to home" buttonStyle={styles.playButton} onPress={() => navigation.navigate('Login')}/>
+          <Button title="Back to home" buttonStyle={styles.playButton} onPress={onBackToHome}/>
 
         </View>}
 

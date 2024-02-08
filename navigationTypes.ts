@@ -3,7 +3,6 @@ export type RootStackParamList = {
     Welcome: undefined;
     PartyPlay: undefined;
     RoundSelection: undefined;
-    HostLobby: undefined;
     GameLobby: undefined;
     Question: undefined;
     QuestionAnswer: undefined;
