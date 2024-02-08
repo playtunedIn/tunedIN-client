@@ -8,7 +8,7 @@ import { useSubscriberHandler } from './message-handlers/subscriber-updates/subs
 export const useSocketMessageHandlers = (setNeedsRecovery: React.Dispatch<React.SetStateAction<boolean>>) => {
   const { createRoomResponseHandler, createRoomErrorResponseHandler } = useCreateRoomResponseHandlers();
   const { joinRoomResponseHandler, joinRoomErrorResponseHandler } = useJoinRoomResponseHandlers();
-  const { startGameErrorResponseHandler } = useStartGameResponseHandlers();
+  const { startGameResponseHandler, startGameErrorResponseHandler } = useStartGameResponseHandlers();
   const { exitRoomResponseHandler, exitRoomErrorResponseHandler } = useExitRoomResponseHandlers();
   const { recoverRoomSessionResponseHandler, recoverRoomSessionErrorResponseHandler } =
     useRecoverRoomSessionHandlers(setNeedsRecovery);
@@ -22,6 +22,7 @@ export const useSocketMessageHandlers = (setNeedsRecovery: React.Dispatch<React.
     createRoomErrorResponse: createRoomErrorResponseHandler,
     joinRoomResponse: joinRoomResponseHandler,
     joinRoomErrorResponse: joinRoomErrorResponseHandler,
+    startGameResponse: startGameResponseHandler,
     startGameErrorResponse: startGameErrorResponseHandler,
     exitRoomResponse: exitRoomResponseHandler,
     exitRoomErrorResponse: exitRoomErrorResponseHandler,
