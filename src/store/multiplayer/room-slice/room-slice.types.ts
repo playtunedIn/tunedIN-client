@@ -1,7 +1,7 @@
 import type { ROOM_STATUS } from '@store/multiplayer/room-slice/room-slice.constants';
 
 export interface RoomState {
-  roomId: string;
+  roomId: string | null;
   roomStatus: RoomStatus;
   roomErrorCode?: string;
 }

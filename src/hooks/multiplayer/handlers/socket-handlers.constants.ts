@@ -22,6 +22,7 @@ export const SOCKET_PING_TIMEOUT = 31000;
 export const CREATE_ROOM_MESSAGE = 'createRoom';
 export const JOIN_ROOM_MESSAGE = 'joinRoom';
 export const START_GAME_MESSAGE = 'startGame';
+export const LEAVE_ROOM_MESSAGE = 'leaveRoom';
 export const ANSWER_QUESTION_MESSAGE = 'answerQuestion';
 
-export type WebSocketMessageTypes = typeof CREATE_ROOM_MESSAGE | typeof JOIN_ROOM_MESSAGE | typeof START_GAME_MESSAGE | typeof ANSWER_QUESTION_MESSAGE;
+export type WebSocketMessageTypes = typeof CREATE_ROOM_MESSAGE | typeof JOIN_ROOM_MESSAGE | typeof START_GAME_MESSAGE | typeof ANSWER_QUESTION_MESSAGE | typeof LEAVE_ROOM_MESSAGE;

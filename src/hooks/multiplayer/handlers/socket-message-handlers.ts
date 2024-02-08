@@ -1,6 +1,6 @@
 import { useRecoverRoomSessionHandlers } from '@hooks/multiplayer/handlers/message-handlers/recover-room-handlers';
 import { useCreateRoomResponseHandlers } from './message-handlers/create-room-handlers';
-import { useExitRoomResponseHandlers } from './message-handlers/exit-room-handlers';
+import { useLeaveRoomResponseHandlers } from './message-handlers/leave-room-handlers';
 import { useJoinRoomResponseHandlers } from '@hooks/multiplayer/handlers/message-handlers/join-room-handlers';
 import { useStartGameResponseHandlers } from '@hooks/multiplayer/handlers/message-handlers/start-game-handlers';
 import { useSubscriberHandler } from './message-handlers/subscriber-updates/subscriber-handler';
@@ -8,8 +8,8 @@ import { useSubscriberHandler } from './message-handlers/subscriber-updates/subs
 export const useSocketMessageHandlers = (setNeedsRecovery: React.Dispatch<React.SetStateAction<boolean>>) => {
   const { createRoomResponseHandler, createRoomErrorResponseHandler } = useCreateRoomResponseHandlers();
   const { joinRoomResponseHandler, joinRoomErrorResponseHandler } = useJoinRoomResponseHandlers();
+  const { leaveRoomResponseHandler, leaveRoomErrorResponseHandler } = useLeaveRoomResponseHandlers();
   const { startGameResponseHandler, startGameErrorResponseHandler } = useStartGameResponseHandlers();
-  const { exitRoomResponseHandler, exitRoomErrorResponseHandler } = useExitRoomResponseHandlers();
   const { recoverRoomSessionResponseHandler, recoverRoomSessionErrorResponseHandler } =
     useRecoverRoomSessionHandlers(setNeedsRecovery);
   const { subscribedMessageResponse } = useSubscriberHandler();
@@ -22,10 +22,10 @@ export const useSocketMessageHandlers = (setNeedsRecovery: React.Dispatch<React.
     createRoomErrorResponse: createRoomErrorResponseHandler,
     joinRoomResponse: joinRoomResponseHandler,
     joinRoomErrorResponse: joinRoomErrorResponseHandler,
+    leaveRoomResponse: leaveRoomResponseHandler,
+    leaveRoomErrorResponse: leaveRoomErrorResponseHandler,
     startGameResponse: startGameResponseHandler,
     startGameErrorResponse: startGameErrorResponseHandler,
-    exitRoomResponse: exitRoomResponseHandler,
-    exitRoomErrorResponse: exitRoomErrorResponseHandler,
     recoverRoomSessionResponse: recoverRoomSessionResponseHandler,
     recoverRoomSessionErrorResponse: recoverRoomSessionErrorResponseHandler,
     subscriptionResponse: subscribedMessageResponse

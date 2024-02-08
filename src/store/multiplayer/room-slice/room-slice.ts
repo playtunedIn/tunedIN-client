@@ -13,7 +13,7 @@ const roomSlice = createSlice({
   name: 'room',
   initialState,
   reducers: {
-    updateRoomId: (state, action: PayloadAction<string>) => {
+    updateRoomId: (state, action: PayloadAction<string | null>) => {
       state.roomId = action.payload;
     },
     updateRoomErrorCode: (state, action: PayloadAction<string | undefined>) => {
