@@ -18,12 +18,18 @@ type GameLobbyProps = {
 export function GameLobby({ navigation }: GameLobbyProps) {
   const roomState = useAppSelector(state => state.room);
   const playerState = useAppSelector(state => state.players);
-
-  const {leaveRoom} = useMultiplayerClient();
+  const { startGame, leaveRoom } = useMultiplayerClient();
 
   const onLeaveRoom = () => {
     leaveRoom();
     navigation.navigate("Welcome");
+  }
+  function onStartGame() {
+    console.log('start game clicked');
+    if (roomState.roomId) {
+      startGame(roomState.roomId);
+      navigation.navigate('Question');
+    }
   }
 
   return (
@@ -49,7 +55,7 @@ export function GameLobby({ navigation }: GameLobbyProps) {
             <Button title="Leave" titleStyle={{ color: 'black' }} buttonStyle={styles.leaveButton} onPress={onLeaveRoom} />
             <Button title="Invite" titleStyle={{ color: 'black' }} buttonStyle={styles.inviteButton} />
           </View>
-          <Button title="Start" titleStyle={{ color: 'black' }} buttonStyle={styles.startButton} onPress={() => navigation.navigate('Question')}/>
+          <Button title="Start" titleStyle={{ color: 'black' }} buttonStyle={styles.startButton} onPress={() => onStartGame()}/>
         </View>
       <Footer />
     </>

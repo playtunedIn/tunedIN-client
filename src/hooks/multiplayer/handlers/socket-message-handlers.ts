@@ -9,7 +9,7 @@ export const useSocketMessageHandlers = (setNeedsRecovery: React.Dispatch<React.
   const { createRoomResponseHandler, createRoomErrorResponseHandler } = useCreateRoomResponseHandlers();
   const { joinRoomResponseHandler, joinRoomErrorResponseHandler } = useJoinRoomResponseHandlers();
   const { leaveRoomResponseHandler, leaveRoomErrorResponseHandler } = useLeaveRoomResponseHandlers();
-  const { startGameErrorResponseHandler } = useStartGameResponseHandlers();
+  const { startGameResponseHandler, startGameErrorResponseHandler } = useStartGameResponseHandlers();
   const { recoverRoomSessionResponseHandler, recoverRoomSessionErrorResponseHandler } =
     useRecoverRoomSessionHandlers(setNeedsRecovery);
   const { subscribedMessageResponse } = useSubscriberHandler();
@@ -24,6 +24,7 @@ export const useSocketMessageHandlers = (setNeedsRecovery: React.Dispatch<React.
     joinRoomErrorResponse: joinRoomErrorResponseHandler,
     leaveRoomResponse: leaveRoomResponseHandler,
     leaveRoomErrorResponse: leaveRoomErrorResponseHandler,
+    startGameResponse: startGameResponseHandler,
     startGameErrorResponse: startGameErrorResponseHandler,
     recoverRoomSessionResponse: recoverRoomSessionResponseHandler,
     recoverRoomSessionErrorResponse: recoverRoomSessionErrorResponseHandler,
