@@ -21,11 +21,11 @@ import { Header } from './src/components/header/Header';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-  const userState = useUserState(window);
-  const initialRoute = userState.userToken ? "Welcome" : "Login";
+  const userToken = !!localStorage.getItem("TUNEDIN_TOKEN");
+  const initialRoute = userToken ? "Welcome" : "Login";
   return (
     <Provider store={setupStore()}>
-    <MultiplayerProvider >
+    <MultiplayerProvider loggedIn={!!userToken}>
     <NavigationContainer>
       <Stack.Navigator initialRouteName={initialRoute} screenOptions={{header: () => <Header />}}>
         <Stack.Screen name="Login" component={LoginScreen} />

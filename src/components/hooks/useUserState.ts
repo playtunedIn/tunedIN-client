@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 
+
 const useUserState = (window: Window) => {
+    const urlParams = window?.location?.href && new URL(window?.location?.href);
     const [userToken, setUserToken] = useState<string | null>(localStorage.getItem("TUNEDIN_TOKEN"));
 
     const [user, setUser] = useState<User | null>(null);
@@ -12,13 +14,14 @@ const useUserState = (window: Window) => {
 
     // set token from query params if it exists
     useEffect(() => {
-        const parsedUrl = window?.location?.href && new URL(window?.location?.href);
-        if (parsedUrl && parsedUrl.searchParams.get("token")) {
-            const token = parsedUrl.searchParams.get("token")!;
+        if (urlParams && urlParams?.searchParams.get("token")) {
+            const token = urlParams.searchParams.get("token")!;
             localStorage.setItem("TUNEDIN_TOKEN", token);
             setUserToken(token);
+            urlParams.searchParams.delete("token")
+            window.location.replace(urlParams.toString());
         }
-    }, [window.location.href, setUserToken]);
+    }, [urlParams, setUserToken]);
 
     useEffect(() => {
         const fetchMe = async () => {

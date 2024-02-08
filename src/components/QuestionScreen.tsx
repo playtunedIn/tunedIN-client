@@ -1,11 +1,13 @@
 import { StackNavigationProp } from '@react-navigation/stack';
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text } from 'react-native';
 import { Button, Avatar, Input, Icon } from 'react-native-elements';
 import { RootStackParamList } from '../../navigationTypes';
 import styles from '../../styles';
 import { Footer } from './footer/Footer';
 import { Header } from './header/Header';
+import { useAppSelector } from '@hooks/store/app-store';
+import { useMultiplayerClient } from '@hooks/multiplayer/multiplayer-client';
 
 type QuestionNavigationProp = StackNavigationProp<RootStackParamList, 'Question'>;
 
@@ -14,22 +16,42 @@ type QuestionProps = {
 };
 
 export function QuestionScreen({ navigation }: QuestionProps) {
+  const [playerAnswer, setPlayerAnswer] = useState(''); 
+  const roomState = useAppSelector(state => state.room);
+  const questions = useAppSelector(state => state.questions.questions);
+  const questionIndex = useAppSelector(state => state.questions.questionIndex);
+  const { answerQuestion } = useMultiplayerClient();
+
+
+  const question = questions && questions.length > 0 ? questions[questionIndex].description : 'No questions available';
+  const questionTitle = questions && questions.length > 0 ? questions[questionIndex].question : 'No title available';
+
+  const questionChoices = questions && questions.length > 0 ? questions[questionIndex].choices : [];
+
+  async function onSubmitAnswer() {
+    answerQuestion(roomState.roomId, questionIndex, [parseInt(playerAnswer)]);
+  }
+
   return (
-    <>
-        <View style={styles.container}>
-          <View style={styles.contentContainer}>
-            <Text style={styles.welcomeText}>Party Play</Text>
-            <Text style={styles.descriptionText}>1. Which player has this song queued up?</Text>
-            <Text></Text>
-            <Button title="Matt" buttonStyle={styles.playButton} />
-            <Button title="Trevor" buttonStyle={styles.playButton} />
-            <Button title="Shayne" buttonStyle={styles.playButton} />
-            <Button title="Haley" buttonStyle={styles.playButton} />
-            <Text></Text>
-            <Button title="Submit" buttonStyle={styles.playButton} onPress={() => navigation.navigate('QuestionAnswer')}/>
-          </View>
-        </View>
-      <Footer />
-    </>
+   <>
+    <View style={styles.container}>
+      <View style={styles.contentContainer}>
+        <Text style={styles.welcomeText}>Party Play</Text>
+        <Text style={styles.descriptionText}>{questionTitle}</Text>
+        <Text style={styles.descriptionText}>{question}</Text>
+        <Text>{playerAnswer}</Text>
+
+          {questionChoices.length > 0 ? questionChoices.map((choice, index) => {
+            return (
+              <Button title={questionChoices[index]} buttonStyle={styles.playButton} onPress={() => setPlayerAnswer(index.toString())}/>
+            )
+          }) : <Text>No choices availible</Text>}
+        
+        <Text></Text>
+        <Button title="Submit" buttonStyle={styles.playButton} onPress={() => onSubmitAnswer()}/>
+      </View>
+    </View>
+    <Footer />
+  </>
   );
 }

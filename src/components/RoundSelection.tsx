@@ -10,6 +10,7 @@ import styles from '../../styles';
 import SocketStatus from './common/SocketStatus';
 import { Header } from './header/Header';
 import { Footer } from './footer/Footer';
+import { START_GAME_MESSAGE } from '@hooks/multiplayer/handlers/socket-handlers.constants';
 
 type RoundSelectionNavigationProp = StackNavigationProp<RootStackParamList, 'RoundSelection'>;
 
