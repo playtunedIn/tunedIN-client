@@ -21,6 +21,7 @@ export function GameLobby({ navigation }: GameLobbyProps) {
   const { startGame, leaveRoom } = useMultiplayerClient();
 
   const onLeaveRoom = () => {
+    console.log("leaving room")
     leaveRoom();
     navigation.navigate("Welcome");
   }
